@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.RestAPI.demo.entity.Book;
+import com.RestAPI.demo.entity.User;
 
 public interface BookService {
 
@@ -13,5 +14,7 @@ public interface BookService {
 	public Boolean addBook(Book book);
 	public Boolean deleteBookById(long Id);
 	public Boolean UpdateBookDetails(Book book);
+
+	
 	
 }

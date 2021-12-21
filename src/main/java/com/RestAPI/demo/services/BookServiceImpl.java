@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.RestAPI.demo.DaoLayer.BookDao;
 import com.RestAPI.demo.entity.Book;
+import com.RestAPI.demo.entity.User;
 
 @Service
 public class BookServiceImpl implements BookService{
@@ -62,6 +63,7 @@ public class BookServiceImpl implements BookService{
 		}
 		return true;
 	}
+	
 	
 
 	

@@ -14,13 +14,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.RestAPI.demo.entity.Book;
+import com.RestAPI.demo.entity.LoginCredentialTuple;
+import com.RestAPI.demo.entity.User;
 import com.RestAPI.demo.services.BookService;
+import com.RestAPI.demo.services.UserService;
 
 @CrossOrigin
 @RestController
 public class MyController {
 	@Autowired
 	BookService BookList;
+	
+	@Autowired
+	UserService userService;
 
 	@GetMapping("/Home")
 	public String Home() {	
@@ -68,6 +74,33 @@ public class MyController {
 		else {
 			return "Some Error occurred";
 		}
+		
+	}
+	
+	@PostMapping("/Register")
+	public String AddUser(@RequestBody User user) {
+		try{
+			userService.AddUserDetail(user);
+			return "success";
+		}catch(Exception e) {
+			return "Error occured";
+		}
+		
+	}
+	
+	@PostMapping("/Login")
+	public User CheckUser(@RequestBody LoginCredentialTuple data) {
+		try {
+			User userDetial = userService.getUserDetial(data.getUsername(), data.getPassword());
+			if(userDetial != null) {
+				return userDetial;
+			}else {
+				return null;
+			}
+			}
+		catch(Exception e) {
+			return null;
+		}	
 		
 	}
 	
